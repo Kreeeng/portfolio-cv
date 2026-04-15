@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivan Skvartsou | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rb-blue: #001E46; --rb-red: #DB0A40; --rb-yellow: #FFCC00; --white: #ffffff;
+            --transition: all 0.9s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--rb-blue); color: var(--white); overflow-x: hidden; scroll-behavior: smooth; }
+        .bg-system { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; }
+        .bg-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center; opacity: 0;
+            transition: opacity 1.2s ease-in-out, transform 2.5s ease-out;
+            transform: scale(1.1); filter: brightness(0.4);
+        }
+        .bg-layer.active { opacity: 1; transform: scale(1); }
+        .vignette {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 10%, var(--rb-blue) 150%); z-index: 1;
+        }
+        .lang-switch {
+            position: fixed; top: 25px; right: 25px; z-index: 1000;
+            background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px;
+            backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.2);
+        }
+        .lang-btn {
+            padding: 10px 20px; border: none; background: transparent; color: white;
+            font-weight: 800; cursor: pointer; border-radius: 50px; text-transform: uppercase; font-size: 0.8rem;
+        }
+        .lang-btn.active { background: var(--rb-red); box-shadow: 0 4px 15px rgba(219, 10, 64, 0.4); }
+        section { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 60px 20px; }
+        .content-card {
+            width: 100%; max-width: 850px; max-height: 85vh; overflow-y: auto;
+            background: rgba(0, 30, 70, 0.45); backdrop-filter: blur(35px);
+            padding: clamp(30px, 5vw, 60px); border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.15); text-align: center;
+            opacity: 0; transform: translateY(40px); transition: var(--transition);
+        }
+        .content-card::-webkit-scrollbar { width: 0; }
+        section.visible .content-card { opacity: 1; transform: translateY(0); }
+        .badge {
+            background: var(--rb-yellow); color: var(--rb-blue); padding: 6px 16px;
+            font-weight: 900; text-transform: uppercase; transform: skew(-10deg);
+            display: inline-block; margin-bottom: 25px;
+        }
+        h1, h2 { font-size: clamp(2.2rem, 7vw, 4.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; margin-bottom: 25px; }
+        p { font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.6; opacity: 0.9; margin-bottom: 20px; }
+        .pill-box { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 25px; }
+        .pill { 
+            background: #fff; color: var(--rb-blue); padding: 10px 22px; 
+            font-weight: 800; text-transform: uppercase; font-size: 0.8rem; 
+            transform: skew(-7deg); transition: 0.3s; text-decoration: none; display: inline-block;
+        }
+        .pill.red { background: var(--rb-red); color: white; }
+        .pill:hover { background: var(--rb-yellow); color: var(--rb-blue); transform: skew(-7deg) scale(1.05); }
+        .cta { 
+            display: inline-block; margin-top: 35px; padding: 20px 40px; background: var(--rb-red);
+            color: #fff; text-decoration: none; font-weight: 900; text-transform: uppercase;
+            transform: skew(-10deg); transition: 0.3s; 
+        }
+        .cta:hover { background: var(--rb-yellow); color: var(--rb-blue); }
+        footer { padding: 40px; text-align: center; font-size: 0.8rem; opacity: 0.4; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+<div class="bg-system">
+    <div class="vignette"></div>
+    <div class="bg-layer active" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0d/FIA_F1_Austria_2025_Nr._1_Verstappen.jpg');"></div>
+    <div class="bg-layer" style="background-image: url('https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2012/12/21/1331580141147_1/red-bull-stratos-mission-attempt');"></div>
+    <div class="bg-layer" style="background-image: url('https://img.redbull.com/images/c_crop,w_3907,h_1953,x_0,y_1792/c_auto,w_1200,h_600/f_auto,q_auto/redbullcom/2020/11/5/fkpnp2zemzgkg4wvaw15/red-bull-skydive-team-mardalsfossen');"></div>
+    <div class="bg-layer" style="background-image: url('https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2021/9/9/go46qcj9ptiwzymla3hg/world-record-tunnel-pass-dario-costa');"></div>
+    <div class="bg-layer" style="background-image: url('https://img.redbull.com/images/q_auto,f_auto/redbullcom/2015/08/17/1331741811298_5/%D0%BA%D0%B0%D1%80%D0%B5%D0%BB-%D1%85%D0%B0%D0%BD%D0%B8%D0%BA%D0%B0.jpg');"></div>
+</div>
+<nav class="lang-switch">
+    <button class="lang-btn active" id="b-de" onclick="sL('de')">DE</button>
+    <button class="lang-btn" id="b-en" onclick="sL('en')">EN</button>
+</nav>
+<section><div class="content-card"><div class="badge">Performance & Tech</div><h1>Ivan<br>Skvartsou</h1><p id="l1">Informatik-Student an der Universität Wien</p></div></section>
+<section><div class="content-card"><h2 id="l2">Studium in Wien</h2><p id="l3">Zugelassener Informatik-Student an der Universität Wien. Aktuell am Vorstudienlehrgang (VWU).</p><div class="pill-box"><span class="pill">Universität Wien</span><span class="pill red" id="l4">Informatik</span><span class="pill" id="l5">VWU Teilnehmer</span></div></div></section>
+<section><div class="content-card"><h2 id="l6">Dokumente</h2><p id="l7">Offizielle akademische Nachweise und Zertifikate.</p><div class="pill-box" style="margin-bottom: 25px;"><span class="pill red">onSET: B1</span><span class="pill" id="l8">GER Standard</span></div><div class="pill-box">
+<a href="https://drive.google.com/file/d/1UHlQQIOwZ4RCErv6U9WF6SOREkPV-3oH/view?usp=sharing" target="_blank" class="pill" id="l9">📄 Zertifikat</a>
+<a href="https://drive.google.com/file/d/1NAFuQFYAJvFfpufFaGbr9yZSPgckC8ct/view?usp=sharing" target="_blank" class="pill" id="l10">📜 Zeugnis</a>
+</div></div></section>
+<section><div class="content-card"><h2 id="l11">Tech Stack</h2><p id="l12">Entwicklung von performanten Web- и Mobile-Apps.</p><div class="pill-box"><span class="pill">TypeScript</span><span class="pill">React Native</span><span class="pill red">Node.js</span><span class="pill">PostgreSQL</span></div></div></section>
+<section><div class="content-card"><h2 id="l13">Kontakt</h2><div class="pill-box"><span class="pill red" id="l14">Deutsch B2</span><span class="pill" id="l15">English C1</span></div><a href="https://t.me/KreeengV" class="cta" id="l16">Telegram Kontakt</a></div></section>
+<footer>© 2026 IVAN SKVARTSOU | VIENNA</footer>
+<script>
+    const sections = document.querySelectorAll('section');
+    const layers = document.querySelectorAll('.bg-layer');
+    const obs = new IntersectionObserver((es) => {
+        es.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                const i = Array.from(sections).indexOf(e.target);
+                layers.forEach(l => l.classList.remove('active'));
+                if(layers[i]) layers[i].classList.add('active');
+            }
+        });
+    }, { threshold: 0.55 });
+    sections.forEach(s => obs.observe(s));
+    const data = {
+        de: ["Informatik-Student an der Universität Wien", "Studium in Wien", "Zugelassener Informatik-Student an der Universität Wien. Aktuell am Vorstudienlehrgang (VWU).", "Informatik", "VWU Teilnehmer", "Dokumente", "Offizielle akademische Nachweise.", "GER Standard", "📄 Zertifikat", "📜 Zeugnis", "Tech Stack", "Entwicklung von performanten Web- и Mobile-Apps.", "Kontakt", "Deutsch B2", "English C1", "Telegram Kontakt"],
+        en: ["Computer Science Student at the University of Vienna", "Academic Path", "Admitted Computer Science student at the University of Vienna. Currently at the preparatory course (VWU).", "Computer Science", "VWU Participant", "Documents", "Official academic records.", "CEFR Standard", "📄 Language Certificate", "📜 School Certificate", "Tech Stack", "Developing high-performance web and mobile apps.", "Contact", "German B2", "English C1", "Contact via Telegram"]
+    };
+    function sL(n) {
+        document.getElementById('b-de').classList.toggle('active', n==='de');
+        document.getElementById('b-en').classList.toggle('active', n==='en');
+        const d = data[n];
+        for(let i=0; i<16; i++) {
+            const el = document.getElementById('l'+(i+1));
+            if(el) el.innerText = d[i];
+        }
+    }
+</script>
+</body>
+</html>
